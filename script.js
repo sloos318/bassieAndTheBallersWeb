@@ -114,17 +114,3 @@ function typewriter() {
 }
 
 typewriter();
-
-const hintButton = document.querySelector("#main-content button");
-const popup = document.querySelector(".hint-popup");
-const closeButton = document.querySelector(".hint-popup .close");
-
-// Open
-hintButton.addEventListener("click", () => {
-    popup.classList.add("show");
-});
-
-// Close
-closeButton.addEventListener("click", () => {
-    popup.classList.remove("show");
-});
