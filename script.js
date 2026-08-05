@@ -1,4 +1,3 @@
-// Set up text to print, each item in array is a new line
 const aText = [
     "C:/WEEKEND> start party.exe",
     "Launching...",
@@ -52,65 +51,92 @@ const aText = [
     "SURVIVE."
 ];
 
+
 let iIndex = 0;
 let iTextPos = 0;
 let iArrLength = aText[0].length;
+
 const iScrollAt = 20;
+
 
 function typewriter() {
 
-    // First 3 lines are slower
     const currentSpeed = iIndex < 3 ? 20 : 5;
     const lineDelay = iIndex < 3 ? 500 : 100;
+
+
+    const destination = document.getElementById("typedtext");
+
 
     let sContents = "";
     let iRow = Math.max(0, iIndex - iScrollAt);
 
-    const destination = document.getElementById("typedtext");
 
     while (iRow < iIndex) {
+
         sContents += aText[iRow++] + "<br>";
+
     }
+
 
     destination.innerHTML =
         sContents +
         aText[iIndex].substring(0, iTextPos) +
         '<span class="cursor">█</span>';
 
+
     iTextPos++;
 
+
     if (iTextPos > iArrLength) {
+
 
         iTextPos = 0;
         iIndex++;
 
+
         if (iIndex < aText.length) {
 
+
             iArrLength = aText[iIndex].length;
+
             setTimeout(typewriter, lineDelay);
 
+
         } else {
+
 
             // Finished typing
             setTimeout(() => {
 
-                // Instantly hide the terminal
+
                 destination.style.display = "none";
 
-                // Fade in the website
+
                 document
                     .getElementById("main-content")
                     .classList.add("show");
 
+
+                // Start hint countdown
+                startHintTimer();
+
+
             }, 2000);
+
 
         }
 
+
     } else {
+
 
         setTimeout(typewriter, currentSpeed);
 
+
     }
+
 }
+
 
 typewriter();

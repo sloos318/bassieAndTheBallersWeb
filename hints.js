@@ -8,8 +8,8 @@ const hints = [
 // Unlock dates
 const unlockDates = [
     null, // Hint 1 is always unlocked
-    new Date("2026-07-23T12:00:00"),
-    new Date("2026-07-28T00:00:00")
+    new Date("2026-07-26T12:00:00"),
+    new Date("2026-08-22T00:00:00")
 ];
 
 // Elements
@@ -91,8 +91,12 @@ function updateCountdown() {
     const minutes = Math.floor((diff / (1000 * 60)) % 60);
     const seconds = Math.floor((diff / 1000) % 60);
 
-    timerElement.textContent =
-        `${days}d ${hours}h ${minutes}m ${seconds}s`;
+    timerElement.innerHTML = `
+    <div class="timer">
+        <div>Next hint in:</div>
+        <div class="countdown">${days}d ${hours}h ${minutes}m ${seconds}s</div>
+    </div>
+    `;
 }
 
 // Open popup
@@ -114,8 +118,14 @@ closeButton.addEventListener("click", () => {
 });
 
 // Initialize
-updateCountdown();
-setInterval(updateCountdown, 1000);
+function startHintTimer() {
+
+    timerElement.style.display = "block";
+
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+
+}
 
 console.log("Now:", new Date());
 console.log("Unlock:", unlockDates[1]);
