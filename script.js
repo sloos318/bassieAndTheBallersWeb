@@ -1,31 +1,27 @@
 const aText = [
     "C:/WEEKEND> start party.exe",
-    "Launching...",
-    "> starting Bassie and the Ballers weekend...",
+    "Launching Bassie and the Ballers...",
     "",
     "[ OK ] Initializing systems...",
     "[ OK ] Loading playlist...",
-    "[ OK ] Connecting speakers...",
-    "[ OK ] Calibrating vibes...",
     "[ OK ] Syncing the squad...",
-    "[ OK ] Checking snack reserves...",
-    "[ OK ] Beverage levels: OPTIMAL",
+    "[ OK ] Snack reserves: READY",
+    "[ OK ] Beverages: OPTIMAL",
     "[ OK ] Weekend mode: ENABLED",
     "",
     "Scanning participants...",
-    "> The Ballers................ VERIFIED",
+    "> The Ballers........ VERIFIED",
     "",
     "Loading activities...",
     "[####################] 100%",
     "",
     "Compiling inside jokes...",
-    "Generating questionable decisions...",
-    "Ignoring responsibilities...",
-    "Activating sleep schedule override...",
+    "Generating bad decisions...",
+    "Disabling responsibilities...",
     "",
     "WARNING:",
-    "Productivity has been disabled.",
-    "Common sense may become unavailable.",
+    "Productivity: OFF",
+    "Common sense: UNAVAILABLE",
     "",
     "Launching:",
     "- Good music",
@@ -35,9 +31,9 @@ const aText = [
     "- Endless laughter",
     "",
     "Final system check...",
-    "Energy....................... MAXIMUM",
-    "Wallet....................... LOW",
-    "Motivation to go home........ 0%",
+    "Energy................ MAXIMUM",
+    "Wallet................ LOW",
+    "Motivation to go home. 0%",
     "",
     "3...",
     "2...",
@@ -47,96 +43,74 @@ const aText = [
     "",
     "SYSTEM STATUS:",
     "HAVE FUN.",
-    "GOOD LUCK.",
     "SURVIVE."
 ];
-
 
 let iIndex = 0;
 let iTextPos = 0;
 let iArrLength = aText[0].length;
-
-const iScrollAt = 20;
-
 
 function typewriter() {
 
     const currentSpeed = iIndex < 3 ? 20 : 5;
     const lineDelay = iIndex < 3 ? 500 : 100;
 
-
     const destination = document.getElementById("typedtext");
 
-
     let sContents = "";
-    let iRow = Math.max(0, iIndex - iScrollAt);
 
-
-    while (iRow < iIndex) {
-
-        sContents += aText[iRow++] + "<br>";
-
+    // Add all previously completed lines
+    for (let i = 0; i < iIndex; i++) {
+        sContents += aText[i] + "<br>";
     }
 
-
-    destination.innerHTML =
-        sContents +
+    // Add the current line being typed
+    sContents +=
         aText[iIndex].substring(0, iTextPos) +
         '<span class="cursor">█</span>';
 
+    destination.innerHTML = sContents;
+
+    // Automatically scroll to the newest line
+    destination.scrollTop = destination.scrollHeight;
 
     iTextPos++;
 
-
+    // Current line is finished
     if (iTextPos > iArrLength) {
-
 
         iTextPos = 0;
         iIndex++;
 
-
+        // There are still lines left
         if (iIndex < aText.length) {
-
 
             iArrLength = aText[iIndex].length;
 
             setTimeout(typewriter, lineDelay);
 
-
         } else {
 
-
-            // Finished typing
+            // Finished typing everything
             setTimeout(() => {
 
-
                 destination.style.display = "none";
-
 
                 document
                     .getElementById("main-content")
                     .classList.add("show");
 
-
                 // Start hint countdown
                 startHintTimer();
 
-
             }, 2000);
-
-
         }
-
 
     } else {
 
-
+        // Continue typing current line
         setTimeout(typewriter, currentSpeed);
-
-
     }
-
 }
-
 
 typewriter();
