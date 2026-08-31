@@ -130,6 +130,21 @@ main {
     z-index: 6;
 
     max-width: calc(100vw - 100px);
+    /* Constrain height and allow internal scrolling so `scrollTop` works */
+    max-height: calc(100dvh - 160px);
+    overflow-y: auto;
+    padding-right: 1rem;
+
+    /* Hide native scrollbars but keep scrolling functional */
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE and Edge */
+  
+
+  /* WebKit browsers */
+  #typedtext::-webkit-scrollbar {
+    width: 0px;
+    height: 0px;
+  }
 }
 
     .fade-out {
