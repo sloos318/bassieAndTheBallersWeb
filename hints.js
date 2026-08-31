@@ -1,15 +1,15 @@
 // Hint image paths
 const hints = [
-    "./images/hint1.jpg",
-    "./images/hint2.jpg",
-    "./images/hint3.jpg"
+    "./images/hint1.png",
+    "./images/hint2.png",
+    "./images/hint3.png"
 ];
 
 // Unlock dates
 const unlockDates = [
     null, // Hint 1 is always unlocked
-    new Date("2026-07-26T12:00:00"),
-    new Date("2026-08-22T00:00:00")
+    new Date("2026-09-03T12:00:00"),
+    new Date("2026-09-05T00:00:00")
 ];
 
 // Elements
