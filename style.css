@@ -107,19 +107,19 @@ main {
         pointer-events: none;
     }
 
-    #timer {
-      position: absolute;
-      z-index: 6;
-      justify-self: center;
-      text-align: center;
+#timer {
+    position: absolute;
+    z-index: 6;
+    justify-self: center;
+    text-align: center;
 
-      top: 10vh;
-      font-size: clamp(1rem, 4vw, 5rem);
+    top: 6vh;
+    font-size: clamp(1rem, 6vh, 8rem);
 
-      .countdown {
-        font-size: clamp(3rem, 8vw, 8rem);
-      }
+    .countdown {
+        font-size: clamp(2.5rem, 14vh, 10rem);
     }
+}
 
 #typedtext {
     white-space: pre-wrap;
@@ -166,30 +166,28 @@ main {
         column-gap: 10%;
 
         .hint-button {
-            width: 10vw;
-            height: 10vw;
+          width: min(15vw, 35vh);
+          height: min(15vw, 35vh);
 
-            min-width: 15rem;
-            min-height: 15rem;
+          min-width: 0;
+          min-height: 0;
 
-            color: #0f0;
-            border: 2px solid #0f0;
-            border-radius: 5%;
-            background-color: transparent;
+          color: #0f0;
+          border: 2px solid #0f0;
+          border-radius: 5%;
+          background-color: transparent;
 
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            gap: 5%;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          gap: 5%;
 
-            font-size: 2.5rem;
+          font-size: clamp(1.5rem, 2.5vh, 2.5rem);
 
-            position: relative;
-
-            cursor: pointer;
-            /* overflow: hidden; */
-            transition: all 0.4s ease;
+          position: relative;
+          cursor: pointer;
+          transition: all 0.4s ease;
 
             &:hover {
                 transform: scale(1.1);
@@ -276,6 +274,7 @@ main {
         visibility: visible;
     }
 }
+
 
 @media (max-width: 768px) {
 
@@ -382,7 +381,7 @@ body {
       font-size: clamp(2rem, 4vw, 5rem);
 
       .countdown {
-        font-size: clamp(2.5rem, 8vw, 8rem);
+        font-size: clamp(2.5rem, 14vw, 12rem);
       }
     }
   }
