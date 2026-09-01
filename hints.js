@@ -9,7 +9,7 @@ const hints = [
 const unlockDates = [
     null, // Hint 1 is always unlocked
     new Date("2026-09-03T12:00:00"),
-    new Date("2026-09-05T00:00:00")
+    new Date("2026-09-05T12:00:00")
 ];
 
 // Elements
