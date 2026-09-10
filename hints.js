@@ -12,10 +12,10 @@ const preloadedHints = hints.map(src => {
 
 // Unlock dates
 const unlockDates = [
-    new Date("2026-09-10T18:00:00"),
+    new Date("2026-09-10T18:30:00"),
     new Date("2026-09-03T12:00:00"),
     new Date("2026-09-05T12:00:00"),
-    new Date("2026-09-10T17:00:00")
+    new Date("2026-09-10T17:30:00")
 ];
 
 // Elements
