@@ -1,15 +1,14 @@
 // Hint image paths
 const hints = [
-    "./images/hint1.png",
-    "./images/hint2.png",
-    "./images/hint3.png"
+    "./images/BinnenKomen.png"
 ];
 
 // Unlock dates
 const unlockDates = [
-    null, // Hint 1 is always unlocked
+    new Date("2026-09-10T17:00:00"),
     new Date("2026-09-03T12:00:00"),
-    new Date("2026-09-05T12:00:00")
+    new Date("2026-09-05T12:00:00"),
+    new Date("2026-09-10T17:00:00")
 ];
 
 // Elements
@@ -24,19 +23,6 @@ function updateHints() {
     const now = new Date();
 
     hintButtons.forEach((button, index) => {
-
-        // Hint 1 is always unlocked
-        if (index === 0) {
-            button.disabled = false;
-
-            // Remove lock icon if there is one
-            const lockIcon = button.querySelector("svg");
-            if (lockIcon) {
-                lockIcon.remove();
-            }
-
-            return;
-        }
 
         if (now >= unlockDates[index]) {
 
@@ -74,13 +60,11 @@ function updateCountdown() {
 
     const now = new Date();
 
-    // Find the next unlock date (skip Hint 1)
-    const nextDate = unlockDates.find((date, index) =>
-        index > 0 && date > now
-    );
+    // Find the next unlock date
+    const nextDate = unlockDates.find(date => date > now);
 
     if (!nextDate) {
-        timerElement.textContent = "All hints unlocked!";
+        // timerElement.textContent = "All hints unlocked!";
         return;
     }
 
@@ -128,5 +112,5 @@ function startHintTimer() {
 }
 
 console.log("Now:", new Date());
-console.log("Unlock:", unlockDates[1]);
-console.log("Difference (hours):", (unlockDates[1] - new Date()) / 1000 / 60 / 60);
+console.log("Unlock:", unlockDates[0]);
+console.log("Difference (hours):", (unlockDates[0] - new Date()) / 1000 / 60 / 60);
