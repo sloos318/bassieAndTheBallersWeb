@@ -3,12 +3,6 @@ const hints = [
     "./images/BinnenKomen.png"
 ];
 
-// Load hint images while the page is loading so they are ready on click
-const preloadedHints = hints.map(src => {
-    const image = new Image();
-    image.src = src;
-    return image;
-});
 
 // Unlock dates
 const unlockDates = [
