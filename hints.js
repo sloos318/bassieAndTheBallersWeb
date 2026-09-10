@@ -3,9 +3,16 @@ const hints = [
     "./images/BinnenKomen.png"
 ];
 
+// Load hint images while the page is loading so they are ready on click
+const preloadedHints = hints.map(src => {
+    const image = new Image();
+    image.src = src;
+    return image;
+});
+
 // Unlock dates
 const unlockDates = [
-    new Date("2026-09-10T17:00:00"),
+    new Date("2026-09-10T18:00:00"),
     new Date("2026-09-03T12:00:00"),
     new Date("2026-09-05T12:00:00"),
     new Date("2026-09-10T17:00:00")
@@ -89,7 +96,7 @@ hintButtons.forEach((button, index) => {
 
         if (button.disabled) return;
 
-        hintImage.src = hints[index];
+        hintImage.src = preloadedHints[index]?.src || hints[index];
         hintImage.alt = `Hint ${index + 1}`;
 
         popup.classList.add("show");
