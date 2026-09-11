@@ -1,15 +1,15 @@
 // Hint image paths
 const hints = [
-    "./images/BinnenKomen.png"
+    "./images/BinnenKomen.png",
+    "./images/DeurOpenen.png",
+    "./images/DeurOpenen2.png",
+    "./images/DeurOpenen3.png"
 ];
 
 
 // Unlock dates
 const unlockDates = [
-    new Date("2026-09-10T18:30:00"),
-    new Date("2026-09-03T12:00:00"),
-    new Date("2026-09-05T12:00:00"),
-    new Date("2026-09-10T17:30:00")
+    new Date("2026-09-10T18:30:00")
 ];
 
 // Elements
@@ -90,7 +90,7 @@ hintButtons.forEach((button, index) => {
 
         if (button.disabled) return;
 
-        hintImage.src = preloadedHints[index]?.src || hints[index];
+        hintImage.src = hints[index];
         hintImage.alt = `Hint ${index + 1}`;
 
         popup.classList.add("show");
